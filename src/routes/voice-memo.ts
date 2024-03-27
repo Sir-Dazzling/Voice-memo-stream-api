@@ -3,11 +3,14 @@ import fs from "fs";
 import OpenAI from "openai";
 import path from "path";
 import handleAudioUpload from "../cloudinary";
+import dotEnv from "dotenv";
+
+dotEnv.config();
 
 const router = express.Router();
 
 const openAi = new OpenAI({
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 const speechFile = path.resolve("./speech.mp3");
